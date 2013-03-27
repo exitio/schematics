@@ -106,11 +106,15 @@ class ListType(BaseType):
                     new_data.append(datum_instance)
                 except ValidationError, ve:
                     errors_found = True
+                    raise ve
                     
             new_value = new_data
 
         if not errors_found:
             instance._data[self.field_name] = new_value
+
+    def __iter__(self):
+        return iter(self.fields)
 
     def _jsonschema_type(self):
         return 'array'
