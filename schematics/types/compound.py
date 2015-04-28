@@ -234,9 +234,6 @@ class ListType(MultiType):
         elif print_none:
             return data
 
-    def __iter__(self):
-        return iter(self.fields)
-
 
 class DictType(MultiType):
 
